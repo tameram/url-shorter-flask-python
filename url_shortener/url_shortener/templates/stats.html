@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="http://aux2.iconspalace.com/uploads/nvidia-icon-256.png">
+    <title>NVIDIA URL</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+
+<body>
+    <section class="section">
+        <div class="container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Original URL</th>
+                        <th>Short URL</th>
+                        <th>Visits</th>
+                        <th>Modifile</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Original URL</th>
+                        <th>Short URL</th>
+                        <th>Visits</th>
+                        <th>Modifile</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    {% for link in links %}
+                    <tr>
+                        <td>{{ link.original_url }}</td>
+                        <td>{{ url_for('short.redirect_to_url', short_url=link.short_url, _external=True) }}</td>
+                        <td>{{ link.visits }}</td>
+                         <td >{{ link.date_created }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <script>
+var myDate = new Date();
+var month = ('0' + (myDate.getMonth() + 1)).slice(-2);
+var date = ('0' + myDate.getDate()).slice(-2);
+var year = myDate.getFullYear();
+var formattedDate = year + '/' + month + '/' + date;
+document.getElementById("dateDemo").innerHTML = formattedDate;
+</script>
+</body>
+
+</html>
